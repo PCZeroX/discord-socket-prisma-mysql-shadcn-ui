@@ -7,6 +7,8 @@ import { initialProfile } from "@/lib/initial-profile";
 
 import { ModeToggle } from "@/components/toggles/mode-toggle";
 
+import { InitialModal } from "@/components/modals/initial-modal";
+
 const SetupPage = () => {
   const profile = use(initialProfile());
 
@@ -22,17 +24,15 @@ const SetupPage = () => {
     })
   );
 
-  console.log("server:", server);
-
   if (server) {
     return redirect(`/servers/${server.id}`);
   }
 
   return (
     <div>
-      <h1>hello world</h1>
       <UserButton />
       <ModeToggle />
+      <InitialModal />
     </div>
   );
 };
