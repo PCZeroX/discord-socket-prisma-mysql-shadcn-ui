@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
+import { ModalProvider } from "@/providers/modal-provider";
+
 import dynamic from "next/dynamic";
 const ThemeProvider = dynamic(() => import("@/providers/theme-provider"), {
   ssr: false,
@@ -28,6 +30,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             enableSystem
             storageKey="discord-theme"
           >
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>
