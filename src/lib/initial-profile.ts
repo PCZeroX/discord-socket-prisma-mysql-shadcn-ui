@@ -1,26 +1,24 @@
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
 
 import { db } from "@/lib/db";
+import { Profile } from "@prisma/client";
 
-export const initialProfile = async () => {
-  try {
-    const user = await currentUser();
+export const initialProfile = async (): Promise<Profile> => {
+  const user = await currentUser();
 
-    if (!user) {
-      // return redirect("/sign-in");
-      return redirectToSignIn();
-    }
+  if (!user) {
+    return redirectToSignIn();
+  }
 
-    const profile = await db.profile.findUnique({
-      where: {
-        userId: user.id,
-      },
-    });
+  const profile = await db.profile.findUnique({
+    where: {
+      userId: user.id,
+    },
+  });
 
-    if (profile && profile.userId === user.id) {
-      return profile;
-    }
-
+  if (profile && profile.userId === user.id) {
+    return profile;
+  } else {
     const newProfile = await db.profile.create({
       data: {
         userId: user.id,
@@ -31,7 +29,5 @@ export const initialProfile = async () => {
     });
 
     return newProfile;
-  } catch (error) {
-    console.log("error:", error);
   }
 };
