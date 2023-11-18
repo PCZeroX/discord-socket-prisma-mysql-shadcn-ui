@@ -1,7 +1,7 @@
 "use client";
 
-import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Command, Search } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
 import {
@@ -75,7 +75,7 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
           Search
         </p>
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto">
-          <span className="text-xs">⌘</span>K
+          <Command className="h-3 w-3" /> K
         </kbd>
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
