@@ -1,3 +1,0 @@
-- https://bejamas.io/blog/passwordless-authentication-with-clerk-in-nextjs/
-- https://www.youtube.com/watch?v=YkOSUVzOAA4&ab_channel=Theo-t3%E2%80%A4gg
-- https://www.thisdot.co/author/dane-grant
